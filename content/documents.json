@@ -1,0 +1,29 @@
+{
+  "documents": [
+    {
+      "title": "Constitution",
+      "description": "The principal governing document of the Club, setting out objects, membership, the Committee structure, meetings, and dissolution.",
+      "file": "/media/documents/Oxford_Motorsport_Society_Constitution.pdf"
+    },
+    {
+      "title": "By-Laws",
+      "description": "Committee regulations made under paragraph 28 of the Constitution, establishing the office of Vice-President.",
+      "file": "/media/documents/Oxford_Motorsport_Society_ByLaws.pdf"
+    },
+    {
+      "title": "Code of Conduct",
+      "description": "Standards of behaviour expected of all members, adopted under paragraph 28 of the Constitution. Agreed by all members as a condition of membership.",
+      "file": "/media/documents/Oxford_Motorsport_Society_Code_of_Conduct.pdf"
+    },
+    {
+      "title": "Complaints Procedure",
+      "description": "How the Club handles complaints about members or Committee decisions, including referral to the University Proctors.",
+      "file": "/media/documents/Oxford_Motorsport_Society_Complaints_Procedure.pdf"
+    },
+    {
+      "title": "Safety Policy & Risk Assessment",
+      "description": "Risk assessment covering indoor events, socials, UK circuit trips, and overseas travel (e.g. Le Mans). Approved by the University Safety Officer.",
+      "file": "/media/documents/Oxford_Motorsport_Society_Risk_Assessment.pdf"
+    }
+  ]
+}
