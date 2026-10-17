@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Notice &mdash; Oxford Motorsport Society</title>
+  <link rel="icon" type="image/png" href="oms-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-content="site">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="oms-logo.png" alt="Oxford Motorsport Society" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="governance.html">Governance</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="join.html" class="nav-join">Join &mdash; &pound;<span data-site="price">5</span></a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html#about" onclick="closeMenu()">About</a>
+      <a href="events.html" onclick="closeMenu()">Events</a>
+      <a href="committee.html" onclick="closeMenu()">Committee</a>
+      <a href="governance.html" onclick="closeMenu()">Governance</a>
+      <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+      <a href="join.html" onclick="closeMenu()">Join &mdash; &pound;<span data-site="price">5</span></a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="page-hero-eyebrow">Oxford Motorsport Society</p>
+    <h1 class="page-hero-title">Privacy Notice</h1>
+    <p class="page-hero-sub">
+      How we collect, use, and protect your personal data in connection with OMS membership and activities.
+    </p>
+  </div>
+
+  <!-- PRIVACY CONTENT -->
+  <section>
+    <div class="container">
+      <div class="prose">
+
+        <span class="last-updated">Last updated: October 2026</span>
+
+        <h2>1. Who we are</h2>
+        <p>
+          The Oxford Motorsport Society (&ldquo;OMS&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) is a student society registered with the University of Oxford. The Club&rsquo;s Secretary is the primary contact for data-related enquiries: <a href="mailto:secretary@oxfordmotorsport.co.uk">secretary@oxfordmotorsport.co.uk</a>.
+        </p>
+        <p>
+          This notice applies to personal data we collect when you apply for membership, attend our events, or otherwise interact with OMS.
+        </p>
+
+        <h2>2. What personal data we collect</h2>
+        <p>When you join OMS through our Stripe checkout page, we collect:</p>
+        <ul>
+          <li>Full name</li>
+          <li>Oxford college or institution</li>
+          <li>University email address (used as your identifier for eligibility purposes)</li>
+          <li>Confirmation that you have agreed to the Code of Conduct</li>
+          <li>Payment confirmation reference from Stripe (we do not store your card details &mdash; these are handled by Stripe&rsquo;s PCI-compliant systems)</li>
+        </ul>
+        <p>For event registrations or circuit trips we may additionally collect:</p>
+        <ul>
+          <li>Dietary requirements or food allergies (where catering is provided)</li>
+          <li>Emergency contact details and relevant medical information (for overnight or overseas trips, provided voluntarily)</li>
+        </ul>
+
+        <h2>3. Why we collect it and our legal basis</h2>
+        <p>We process your data for the following purposes:</p>
+        <ul>
+          <li><strong>Membership register</strong> &mdash; the Constitution (paragraph&nbsp;21) requires the Secretary to maintain a register of members available to the University Proctors and Clubs Office on request. Our legal basis is compliance with a legal/regulatory obligation and the legitimate interests of the Club in administering its membership.</li>
+          <li><strong>Communication about events</strong> &mdash; to notify you of watch parties, socials, and trips. Our legal basis is legitimate interests (you joined specifically to receive this information).</li>
+          <li><strong>Payment records</strong> &mdash; Stripe processes payment on our behalf and retains transaction records for their own legal obligations. We retain only a payment confirmation for our accounts, as required by the Treasurer&rsquo;s duties under paragraph&nbsp;22 of the Constitution.</li>
+          <li><strong>Event photographs</strong> &mdash; photos taken at our events may be published on this website and our social media, on the basis of the Club&rsquo;s legitimate interest in promoting its activities. If you would prefer not to appear, tell the organiser at the event or email the Secretary and we will remove any published photo of you.</li>
+          <li><strong>Safety and welfare</strong> &mdash; dietary and medical information is processed only for the specific event for which it was provided, on the basis of your consent.</li>
+        </ul>
+
+        <h2>4. Who sees your data</h2>
+        <p>Access to member data is limited to:</p>
+        <ul>
+          <li>The Club Committee (President, Vice-President, Secretary, Treasurer, Senior Member) in the course of administering the Club</li>
+          <li>The University of Oxford Proctors and Clubs Office, on request, as required by the Constitution</li>
+          <li>Stripe, as our payment processor, under their own <a href="https://stripe.com/gb/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
+        </ul>
+        <p>We do not sell, rent, or share your personal data with any third parties for marketing purposes.</p>
+
+        <h2>5. How long we keep it</h2>
+        <p>
+          Membership register data is retained for the duration of the academic year for which you hold membership, and for a reasonable period thereafter to satisfy any requests from the Proctors or for accounting purposes (typically one year). Payment records are retained for six years as required by accounting regulations. Dietary and medical information collected for a specific event is deleted after that event has taken place.
+        </p>
+        <p>
+          When Committee members hand over to their successors (as required by paragraph&nbsp;26 of the Constitution), personal data held by the outgoing officer is transferred to the incoming officer for the same purposes and is not retained by the outgoing officer personally.
+        </p>
+
+        <h2>6. Your rights</h2>
+        <p>Under the UK General Data Protection Regulation and the Data Protection Act 2018, you have the right to:</p>
+        <ul>
+          <li>Access the personal data we hold about you</li>
+          <li>Request correction of inaccurate data</li>
+          <li>Request deletion of your data (subject to our obligation to maintain the membership register during your year of membership)</li>
+          <li>Object to processing based on legitimate interests</li>
+          <li>Withdraw consent at any time where processing is based on consent</li>
+        </ul>
+        <p>
+          To exercise any of these rights, contact the Secretary at <a href="mailto:secretary@oxfordmotorsport.co.uk">secretary@oxfordmotorsport.co.uk</a>. You also have the right to lodge a complaint with the Information Commissioner&rsquo;s Office (<a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a>).
+        </p>
+
+        <h2>7. Security</h2>
+        <p>
+          We take reasonable steps to keep member data secure. Membership details are stored in the Club&rsquo;s Stripe account, which is accessible only to the Committee members who administer membership (normally the Secretary and Treasurer), and are not published publicly. Payment processing is handled entirely by Stripe; OMS does not receive or store payment card details.
+        </p>
+
+        <h2>8. Complaints and formal records</h2>
+        <p>
+          Under the Complaints Procedure, a confidential record of any formal complaints and their outcomes is maintained by the Secretary in accordance with the Data Protection Act 2018. This record is available to the Proctors on request.
+        </p>
+
+        <h2>9. Changes to this notice</h2>
+        <p>
+          This notice is reviewed at each annual re-registration. Material changes will be notified to members by email. The current version is always available at this URL.
+        </p>
+
+        <h2>10. Contact</h2>
+        <p>
+          For any data protection enquiries, contact the Secretary: <a href="mailto:secretary@oxfordmotorsport.co.uk">secretary@oxfordmotorsport.co.uk</a>.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="oms-logo.png" alt="Oxford Motorsport Society" />
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-col">
+          <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="committee.html">Committee</a></li>
+            <li><a href="governance.html">Governance</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="join.html">Join &mdash; &pound;<span data-site="price">5</span></a></li>
+            <li><a href="privacy.html">Privacy Notice</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 Oxford Motorsport Society</p>
+        <p>University of Oxford</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

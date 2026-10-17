@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join &mdash; Oxford Motorsport Society</title>
+  <link rel="icon" type="image/png" href="oms-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-content="site">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="oms-logo.png" alt="Oxford Motorsport Society" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="governance.html">Governance</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="join.html" class="nav-join active">Join &mdash; &pound;<span data-site="price">5</span></a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html#about" onclick="closeMenu()">About</a>
+      <a href="events.html" onclick="closeMenu()">Events</a>
+      <a href="committee.html" onclick="closeMenu()">Committee</a>
+      <a href="governance.html" onclick="closeMenu()">Governance</a>
+      <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+      <a href="join.html" onclick="closeMenu()">Join &mdash; &pound;<span data-site="price">5</span></a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="page-hero-eyebrow">Oxford Motorsport Society</p>
+    <h1 class="page-hero-title">Join the Society</h1>
+    <p class="page-hero-sub">
+      Annual membership is &pound;<span data-site="price">5</span> and open to all University of Oxford students. Join online in a couple of minutes through our secure Stripe checkout.
+    </p>
+  </div>
+
+  <!-- JOIN -->
+  <section>
+    <div class="container">
+      <div class="join-layout">
+
+        <!-- INFO COLUMN -->
+        <div class="join-info">
+          <p class="section-eyebrow">Membership</p>
+          <h2 class="section-heading">What you get</h2>
+          <div class="section-rule"></div>
+
+          <h3>Access to all events</h3>
+          <p>Members get access to every watch party, speaker event, social, and circuit trip we run throughout the Oxford academic year.</p>
+
+          <h3>Eligibility</h3>
+          <p>Membership is open to all student members of the University of Oxford, including:</p>
+          <ul>
+            <li>All undergraduate and postgraduate students of the University</li>
+            <li>Visiting students on the University&rsquo;s Register of Visiting Students</li>
+            <li>Students at Permanent Private Halls and Ruskin / Ripon Colleges</li>
+            <li>Members of Oxford Brookes University (subject to the one-fifth cap in the Constitution)</li>
+          </ul>
+
+          <h3>Your membership register</h3>
+          <p>
+            Your name, college, and University email are held on the Club&rsquo;s membership register as required by paragraph&nbsp;21 of the Constitution. This register may be inspected by the University Proctors and Clubs Office on request. See our <a href="privacy.html" style="color:var(--navy)">Privacy Notice</a> for full details.
+          </p>
+
+          <h3>Code of Conduct</h3>
+          <p>
+            All members must agree to the Club&rsquo;s <a href="media/documents/Oxford_Motorsport_Society_Code_of_Conduct.pdf" target="_blank" rel="noopener" style="color:var(--navy)">Code of Conduct</a> as a condition of membership.
+          </p>
+        </div>
+
+        <!-- JOIN CARD -->
+        <div>
+          <div class="join-form-card">
+            <h3>Membership Application</h3>
+            <div class="price-badge">
+              <span class="price-amount">&pound;<span data-site="price">5</span></span>
+              <span class="price-label">/ academic year</span>
+            </div>
+
+            <ol class="join-steps">
+              <li>Click <strong>Join Now</strong> to open the Stripe checkout.</li>
+              <li>Enter your full name, college, and Oxford University email.</li>
+              <li>Tick to confirm you agree to the <a href="media/documents/Oxford_Motorsport_Society_Code_of_Conduct.pdf" target="_blank" rel="noopener">Code of Conduct</a>.</li>
+              <li>Pay &pound;<span data-site="price">5</span> securely by card.</li>
+            </ol>
+
+            <a class="btn-join" id="joinButton" href="#" rel="noopener">
+              Join Now &mdash; &pound;<span data-site="price">5</span>
+            </a>
+
+            <p class="form-note" id="joinUnavailable" hidden>
+              Online joining isn&rsquo;t open yet. Email <a href="mailto:oxfordmotorsport@gmail.com">oxfordmotorsport@gmail.com</a> and we&rsquo;ll get you signed up.
+            </p>
+
+            <p class="form-note">
+              Payment is handled securely by Stripe; OMS never sees your card details.
+              By joining, you confirm eligibility as a University of Oxford student.
+              <br />
+              <a href="privacy.html">Privacy Notice</a> &mdash; <a href="media/documents/Oxford_Motorsport_Society_Code_of_Conduct.pdf" target="_blank" rel="noopener">Code of Conduct</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="oms-logo.png" alt="Oxford Motorsport Society" />
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-col">
+          <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="committee.html">Committee</a></li>
+            <li><a href="governance.html">Governance</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="join.html">Join &mdash; &pound;<span data-site="price">5</span></a></li>
+            <li><a href="privacy.html">Privacy Notice</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 Oxford Motorsport Society</p>
+        <p>University of Oxford</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>
