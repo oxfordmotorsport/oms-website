@@ -1,0 +1,9 @@
+{
+  "members": [
+    { "role": "President", "name": "", "college": "", "email": "president@oxfordmotorsport.co.uk", "photo": "", "bio": "" },
+    { "role": "Vice-President", "name": "", "college": "", "email": "vicepresident@oxfordmotorsport.co.uk", "photo": "", "bio": "" },
+    { "role": "Secretary", "name": "", "college": "", "email": "secretary@oxfordmotorsport.co.uk", "photo": "", "bio": "" },
+    { "role": "Treasurer", "name": "", "college": "", "email": "treasurer@oxfordmotorsport.co.uk", "photo": "", "bio": "" },
+    { "role": "Senior Member", "name": "", "college": "", "email": "oxfordmotorsport@gmail.com", "photo": "", "bio": "" }
+  ]
+}
