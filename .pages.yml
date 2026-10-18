@@ -1,0 +1,141 @@
+# Pages CMS config — the admin editor at https://app.pagescms.org
+# Each entry below edits one file in content/; the website reads those files via site.js.
+
+media:
+  - name: images
+    label: Images
+    input: media/images
+    output: /media/images
+    categories: [image]
+  - name: documents
+    label: Documents
+    input: media/documents
+    output: /media/documents
+    categories: [document]
+
+content:
+  - name: committee
+    label: Committee
+    type: file
+    path: content/committee.json
+    format: json
+    fields:
+      - name: members
+        label: Committee members
+        description: Shown in this order on the Committee page. Drag to reorder.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{role} — {name}"
+        fields:
+          - { name: role, label: Role, type: string, required: true, description: "e.g. President" }
+          - { name: name, label: Name, type: string, description: "Leave blank if the role is vacant" }
+          - { name: college, label: College, type: string }
+          - { name: email, label: Email, type: string }
+          - { name: photo, label: Photo, type: image, description: "Square photos look best", options: { media: images } }
+          - { name: bio, label: Short bio, type: text, description: "One or two sentences (optional)" }
+
+  - name: events
+    label: Term cards & events
+    type: file
+    path: content/events.json
+    format: json
+    fields:
+      - name: terms
+        label: Terms
+        description: The term with the latest start date is shown as "Upcoming"; older terms go into the archive automatically.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{term}"
+        fields:
+          - { name: term, label: Term, type: string, required: true, description: "e.g. Michaelmas 2026" }
+          - { name: startDate, label: Term start date, type: date, required: true, options: { format: yyyy-MM-dd } }
+          - { name: termCard, label: Term card image, type: image, description: "Optional — the same graphic you post on Instagram", options: { media: images } }
+          - name: events
+            label: Events
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{date} {title}"
+            fields:
+              - { name: title, label: Title, type: string, required: true }
+              - { name: date, label: Date, type: date, required: true, options: { format: yyyy-MM-dd } }
+              - { name: time, label: Time, type: string, description: "e.g. 7pm" }
+              - { name: location, label: Location, type: string }
+              - name: type
+                label: Type
+                type: select
+                options:
+                  values: [Watch party, Speaker event, Social, Trip, Other]
+              - { name: description, label: Description, type: text }
+              - { name: link, label: Sign-up / ticket link, type: string, description: "Optional — hidden once the event has passed" }
+
+  - name: documents
+    label: Governance documents
+    type: file
+    path: content/documents.json
+    format: json
+    fields:
+      - name: documents
+        label: Documents
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - { name: title, label: Title, type: string, required: true }
+          - { name: description, label: Description, type: text }
+          - { name: file, label: File, type: file, required: true, options: { media: documents } }
+
+  - name: gallery
+    label: Photos
+    type: file
+    path: content/gallery.json
+    format: json
+    fields:
+      - name: photos
+        label: Home page photos
+        description: The photo section appears on the home page once at least one photo is added. Resize phone photos to ~1600px wide first so the page stays fast.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{caption}"
+        fields:
+          - { name: image, label: Photo, type: image, required: true, options: { media: images } }
+          - { name: caption, label: Caption, type: string, description: "e.g. British GP watch party, July 2026" }
+
+  - name: sponsors
+    label: Sponsors
+    type: file
+    path: content/sponsors.json
+    format: json
+    fields:
+      - name: sponsors
+        label: Sponsors
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - { name: name, label: Name, type: string, required: true }
+          - { name: logo, label: Logo, type: image, description: "PNG or SVG, ideally on a transparent background", options: { media: images } }
+          - { name: url, label: Website, type: string }
+
+  - name: site
+    label: Site settings
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - { name: academicYear, label: Membership year, type: string, required: true, description: "Shown on the home and committee pages, e.g. 2026–27" }
+      - { name: price, label: Membership price (£), type: number, required: true }
+      - { name: stripeLink, label: Stripe payment link, type: string, description: "From Stripe → Payment Links. While blank, the Join page says online joining opens soon." }
+      - { name: heroImage, label: Home page background photo, type: image, description: "Optional wide photo behind the title (it's darkened automatically)", options: { media: images } }
+      - { name: feedbackForm, label: Anonymous feedback form link, type: string, description: "Optional Google Form link — adds a feedback button to the Contact section" }
