@@ -42,9 +42,6 @@ document.addEventListener('click', function (e) {
     document.querySelectorAll('[data-site="price"]').forEach(function (el) {
       if (s.price !== '' && s.price != null) el.textContent = s.price;
     });
-    document.querySelectorAll('[data-site="academicYear"]').forEach(function (el) {
-      if (s.academicYear) el.textContent = s.academicYear;
-    });
 
     var join = $('joinButton');
     if (join) {
@@ -73,10 +70,8 @@ document.addEventListener('click', function (e) {
   }
 
   // ── COMMITTEE ──────────────────────────────────────────────────────────────
-  function renderCommittee(data) {
-    var grid = $('committeeGrid');
-    if (!grid) return;
-    grid.innerHTML = (data.members || []).map(function (m) {
+  function committeeCards(members) {
+    return (members || []).filter(function (m) { return m.role; }).map(function (m) {
       var photo = m.photo
         ? '<img src="' + esc(m.photo) + '" alt="' + esc(m.name || m.role) + '" loading="lazy" />'
         : '&#128100;';
@@ -87,10 +82,20 @@ document.addEventListener('click', function (e) {
           '<p class="committee-name">' + (m.name ? esc(m.name) : '&mdash;') + '</p>' +
           (m.college ? '<p class="committee-college">' + esc(m.college) + '</p>' : '') +
           (m.bio ? '<p class="committee-bio">' + esc(m.bio) + '</p>' : '') +
-          (m.email ? '<a class="committee-email" href="mailto:' + esc(m.email) + '">' + esc(m.email) + '</a>' : '') +
         '</div>' +
       '</div>';
     }).join('');
+  }
+
+  function renderCommittee(data) {
+    var exec = $('executiveGrid');
+    if (!exec) return;
+    exec.innerHTML = committeeCards(data.executive);
+    var general = committeeCards(data.general);
+    if (general) {
+      $('generalGrid').innerHTML = general;
+      $('generalSection').hidden = false;
+    }
   }
 
   // ── EVENTS / TERM CARDS ────────────────────────────────────────────────────
@@ -120,33 +125,40 @@ document.addEventListener('click', function (e) {
     }).join('') + '</div>';
   }
 
-  function termBody(t) {
-    var card = t.termCard
-      ? '<a class="term-card" href="' + esc(t.termCard) + '" target="_blank" rel="noopener">' +
-          '<img src="' + esc(t.termCard) + '" alt="' + esc(t.term) + ' term card" loading="lazy" /></a>'
-      : '';
-    var rows = eventRows(t.events);
-    if (!card && !rows) return '<div class="empty-state"><p>Events for this term will be announced soon.</p></div>';
-    return '<div class="term-layout' + (card && rows ? '' : ' term-layout-single') + '">' + card + rows + '</div>';
+  function termCardImage(t) {
+    return '<a class="term-card" href="' + esc(t.termCard) + '" target="_blank" rel="noopener">' +
+      '<img src="' + esc(t.termCard) + '" alt="' + esc(t.term) + ' term card" loading="lazy" /></a>';
   }
 
   function renderEvents(data) {
     var current = $('currentTerm');
-    var past = $('pastTerms');
     if (!current) return;
-    var terms = (data.terms || []).slice().sort(function (a, b) {
+    var terms = (data.terms || []).filter(function (t) { return t.term; }).sort(function (a, b) {
       return String(b.startDate).localeCompare(String(a.startDate));
     });
+    if (!terms.length) return;
 
-    if (terms.length) {
-      current.innerHTML = '<span class="term-label">' + esc(terms[0].term) + '</span>' + termBody(terms[0]);
-    }
+    // Current term: the 4:5 term card, with the event list beside it if one was added
+    var t = terms[0];
+    var card = t.termCard ? termCardImage(t) : '';
+    var rows = eventRows(t.events);
+    current.innerHTML = '<span class="term-label">' + esc(t.term) + '</span>' +
+      (card || rows
+        ? '<div class="term-layout' + (card && rows ? '' : ' term-layout-single') + '">' + card + rows + '</div>'
+        : '<div class="empty-state"><p>Events for this term will be announced soon.</p></div>');
 
-    if (past && terms.length > 1) {
-      past.innerHTML = terms.slice(1).map(function (t) {
-        return '<details class="past-term"><summary>' + esc(t.term) + '</summary>' + termBody(t) + '</details>';
-      }).join('');
-    }
+    // Archive: a grid of past term cards
+    var past = terms.slice(1);
+    if (!past.length) return;
+    $('pastTerms').innerHTML = past.map(function (t) {
+      return t.termCard
+        ? '<a class="term-tile" href="' + esc(t.termCard) + '" target="_blank" rel="noopener">' +
+            '<img src="' + esc(t.termCard) + '" alt="' + esc(t.term) + ' term card" loading="lazy" />' +
+            '<span class="term-tile-label">' + esc(t.term) + '</span></a>'
+        : '<div class="term-tile"><div class="term-tile-blank">' + esc(t.term) + '</div>' +
+            '<span class="term-tile-label">' + esc(t.term) + '</span></div>';
+    }).join('');
+    $('pastSection').hidden = false;
   }
 
   // ── DOCUMENTS ──────────────────────────────────────────────────────────────
@@ -180,19 +192,80 @@ document.addEventListener('click', function (e) {
     section.hidden = false;
   }
 
+  // Home page logo strip + the Sponsors page
   function renderSponsors(data) {
-    var grid = $('sponsorGrid');
     var sponsors = (data.sponsors || []).filter(function (s) { return s.name; });
-    if (!grid || !sponsors.length) return;
-    grid.innerHTML = sponsors.map(function (s) {
-      var inner = s.logo ? '<img src="' + esc(s.logo) + '" alt="' + esc(s.name) + '" loading="lazy" />' : '<span>' + esc(s.name) + '</span>';
-      return s.url
-        ? '<a class="sponsor" href="' + esc(s.url) + '" target="_blank" rel="noopener" title="' + esc(s.name) + '">' + inner + '</a>'
-        : '<div class="sponsor" title="' + esc(s.name) + '">' + inner + '</div>';
+
+    var strip = $('sponsorGrid');
+    if (strip && sponsors.length) {
+      strip.innerHTML = sponsors.map(function (s) {
+        var inner = s.logo ? '<img src="' + esc(s.logo) + '" alt="' + esc(s.name) + '" loading="lazy" />' : '<span>' + esc(s.name) + '</span>';
+        return s.url
+          ? '<a class="sponsor" href="' + esc(s.url) + '" target="_blank" rel="noopener" title="' + esc(s.name) + '">' + inner + '</a>'
+          : '<div class="sponsor" title="' + esc(s.name) + '">' + inner + '</div>';
+      }).join('');
+      strip.hidden = false;
+    }
+
+    var cards = $('sponsorCards');
+    if (cards && sponsors.length) {
+      cards.innerHTML = sponsors.map(function (s) {
+        return '<div class="sponsor-card">' +
+          '<div class="sponsor-card-logo">' +
+            (s.logo ? '<img src="' + esc(s.logo) + '" alt="' + esc(s.name) + '" loading="lazy" />' : '<span>' + esc(s.name) + '</span>') +
+          '</div>' +
+          '<div class="sponsor-card-body">' +
+            '<strong>' + esc(s.name) + '</strong>' +
+            (s.description ? '<p>' + esc(s.description) + '</p>' : '') +
+            (s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">Visit website &rarr;</a>' : '') +
+          '</div>' +
+        '</div>';
+      }).join('');
+      $('currentSponsors').hidden = false;
+    }
+
+    var pitch = $('sponsorPitch');
+    if (pitch && data.pitch) {
+      pitch.innerHTML = String(data.pitch).split(/\n\s*\n/).map(function (para) {
+        return '<p>' + esc(para.trim()) + '</p>';
+      }).join('');
+    }
+
+    var pack = $('sponsorPack');
+    if (pack && data.pack) {
+      pack.href = data.pack;
+      pack.hidden = false;
+    }
+  }
+
+  // ── STORE ──────────────────────────────────────────────────────────────────
+  // Loaded on every page: the Store nav link only appears once something is listed.
+  function renderStore(data) {
+    var products = (data.products || []).filter(function (p) { return p.name && p.status !== 'Hidden'; });
+    if (!products.length) return;
+
+    document.querySelectorAll('[data-nav="store"]').forEach(function (el) { el.hidden = false; });
+
+    var grid = $('productGrid');
+    if (!grid) return;
+    grid.innerHTML = products.map(function (p) {
+      var price = p.price === '' || p.price == null ? '' : '&pound;' + (p.price % 1 ? Number(p.price).toFixed(2) : p.price);
+      var soldOut = p.status === 'Sold out' || !p.stripeLink;
+      return '<div class="product-card">' +
+        '<div class="product-image">' +
+          (p.image ? '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy" />' : '') +
+        '</div>' +
+        '<div class="product-info">' +
+          (p.category ? '<p class="product-category">' + esc(p.category) + '</p>' : '') +
+          '<p class="product-name">' + esc(p.name) + '</p>' +
+          (price ? '<p class="product-price">' + price + '</p>' : '') +
+          (p.description ? '<p class="product-desc">' + esc(p.description) + '</p>' : '') +
+          (soldOut
+            ? '<span class="btn-join btn-join-disabled">' + (p.status === 'Sold out' ? 'Sold out' : 'Coming soon') + '</span>'
+            : '<a class="btn-join" href="' + esc(p.stripeLink) + '" target="_blank" rel="noopener">Buy now</a>') +
+        '</div>' +
+      '</div>';
     }).join('');
-    grid.hidden = false;
-    var heading = $('sponsorHeading');
-    if (heading) heading.textContent = 'Our Sponsors';
   }
 
   var renderers = {
@@ -201,11 +274,15 @@ document.addEventListener('click', function (e) {
     events: renderEvents,
     documents: renderDocuments,
     gallery: renderGallery,
-    sponsors: renderSponsors
+    sponsors: renderSponsors,
+    store: renderStore
   };
 
-  // Each page lists the content files it needs: <body data-content="site committee">
-  (document.body.getAttribute('data-content') || 'site').split(/\s+/).forEach(function (name) {
+  // Each page lists the content files it needs: <body data-content="site committee">.
+  // "store" is always loaded so the nav can show or hide the Store link.
+  var names = (document.body.getAttribute('data-content') || 'site').split(/\s+/);
+  if (names.indexOf('store') < 0) names.push('store');
+  names.forEach(function (name) {
     if (!renderers[name]) return;
     load(name).then(renderers[name]).catch(function (err) { console.error(err); });
   });

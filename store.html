@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Store &mdash; Oxford Motorsport Society</title>
+  <link rel="icon" type="image/png" href="oms-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-content="site store">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="oms-logo.png" alt="Oxford Motorsport Society" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="committee.html">Committee</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li data-nav="store" hidden><a href="store.html" class="active">Store</a></li>
+        <li><a href="governance.html">Governance</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="join.html" class="nav-join">Join &mdash; &pound;<span data-site="price">5</span></a></li>
+      </ul>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html#about" onclick="closeMenu()">About</a>
+      <a href="events.html" onclick="closeMenu()">Events</a>
+      <a href="committee.html" onclick="closeMenu()">Committee</a>
+      <a href="sponsors.html" onclick="closeMenu()">Sponsors</a>
+      <a href="store.html" onclick="closeMenu()" data-nav="store" hidden>Store</a>
+      <a href="governance.html" onclick="closeMenu()">Governance</a>
+      <a href="contact.html" onclick="closeMenu()">Contact</a>
+      <a href="join.html" onclick="closeMenu()">Join &mdash; &pound;<span data-site="price">5</span></a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="page-hero-eyebrow">Oxford Motorsport Society</p>
+    <h1 class="page-hero-title">Store</h1>
+    <p class="page-hero-sub">
+      Event tickets and merchandise.
+    </p>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="product-grid" id="productGrid">
+        <div class="empty-state">
+          <p>Nothing on sale right now &mdash; check back soon.</p>
+        </div>
+      </div>
+      <p class="store-note">
+        Payments are processed securely by Stripe. For questions about an order, email <a href="mailto:oxfordmotorsport@gmail.com">oxfordmotorsport@gmail.com</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="oms-logo.png" alt="Oxford Motorsport Society" />
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-col">
+          <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="committee.html">Committee</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+            <li data-nav="store" hidden><a href="store.html">Store</a></li>
+            <li><a href="governance.html">Governance</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="join.html">Join &mdash; &pound;<span data-site="price">5</span></a></li>
+            <li><a href="privacy.html">Privacy Notice</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 Oxford Motorsport Society</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

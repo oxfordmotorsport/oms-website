@@ -54,7 +54,7 @@ nav {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.6rem;
   list-style: none;
 }
 
@@ -435,7 +435,87 @@ a.sponsor:hover { border-color: var(--navy); }
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.8;
+  margin-bottom: 2rem;
 }
+.sponsor-pitch p { margin-bottom: 1rem; }
+.sponsor-pitch p:last-child { margin-bottom: 0; }
+
+.sponsor-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.sponsor-card { border: 1px solid var(--border); background: var(--white); }
+
+.sponsor-card-logo {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.sponsor-card-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.sponsor-card-logo span { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--navy); }
+
+.sponsor-card-body { padding: 1.25rem 1.5rem 1.5rem; }
+.sponsor-card-body strong { display: block; font-family: 'Outfit', sans-serif; font-size: 1.05rem; color: var(--navy); margin-bottom: 0.4rem; }
+.sponsor-card-body p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; margin-bottom: 0.6rem; }
+.sponsor-card-body a { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+
+.sponsor-us { background: var(--light); }
+
+.sponsor-us-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 5rem;
+  align-items: start;
+}
+
+.sponsor-contact-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2.25rem;
+}
+.sponsor-contact-card h3 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; color: var(--navy); margin-bottom: 0.6rem; }
+.sponsor-contact-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+.sponsor-contact-card .btn { display: block; text-align: center; }
+.sponsor-pack {
+  display: block;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+}
+.sponsor-contact-card .sponsor-contact-email { margin: 1rem 0 0; text-align: center; font-size: 0.8rem; }
+
+/* ── STORE ── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.product-grid .empty-state { grid-column: 1 / -1; }
+
+.product-card { border: 1px solid var(--border); background: var(--white); display: flex; flex-direction: column; }
+
+.product-image { aspect-ratio: 4 / 5; background: var(--light); }
+.product-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.product-info { padding: 1.25rem 1.5rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
+.product-category { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem; }
+.product-name { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); line-height: 1.25; }
+.product-price { font-family: 'Outfit', sans-serif; font-size: 1.05rem; color: var(--navy); margin: 0.3rem 0 0.6rem; }
+.product-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+.product-info .btn-join { margin-top: auto; display: block; text-align: center; text-decoration: none; }
+
+.store-note { margin-top: 2rem; font-size: 0.8rem; color: var(--muted); }
+.store-note a { color: var(--navy); text-underline-offset: 2px; }
 .sponsor-pitch a { color: var(--navy); text-underline-offset: 2px; }
 
 /* ── CONTACT ── */
@@ -689,6 +769,10 @@ a.sponsor:hover { border-color: var(--navy); }
 }
 .committee-email:hover { color: var(--navy); }
 
+.committee-contact { padding-block: 2.5rem; }
+.committee-contact p { color: var(--muted); font-size: 0.92rem; }
+.committee-contact a { color: var(--navy); text-underline-offset: 2px; }
+
 /* ── EVENTS PAGE ── */
 .term-label {
   display: inline-block;
@@ -792,36 +876,59 @@ a.sponsor:hover { border-color: var(--navy); }
 
 .term-layout {
   display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 2rem;
+  grid-template-columns: 360px 1fr;
+  gap: 2.5rem;
   align-items: start;
 }
 .term-layout-single { grid-template-columns: 1fr; }
-.term-layout-single .term-card { max-width: 480px; }
+.term-layout-single .term-card { max-width: 440px; }
 
-.term-card img {
+.term-card { display: block; }
+
+.term-card img,
+.term-tile img {
   width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
   display: block;
   border: 1px solid var(--border);
 }
 
-.past-term {
-  border: 1px solid var(--border);
-  background: var(--white);
-  margin-bottom: 1rem;
+.term-archive {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
 }
 
-.past-term summary {
-  cursor: pointer;
-  padding: 1rem 1.5rem;
+.term-tile {
+  display: block;
+  text-decoration: none;
+}
+.term-tile:hover img { border-color: var(--navy); }
+
+.term-tile-blank {
+  aspect-ratio: 4 / 5;
+  background: var(--navy);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
+}
+
+.term-tile-label {
+  display: block;
+  padding-top: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--navy);
 }
 
-.past-term[open] summary { border-bottom: 1px solid var(--border); }
-.past-term .term-layout { padding: 1.5rem; }
-.past-term .empty-state { border: none; }
 
 .empty-state {
   text-align: center;
@@ -1200,11 +1307,15 @@ footer {
   .join-form-card { max-width: 520px; }
 }
 
+@media (max-width: 1100px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
+
 @media (max-width: 860px) {
   .term-layout { grid-template-columns: 1fr; }
   .term-card { max-width: 420px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
+  .sponsor-us-layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-nav { padding-left: 0; grid-column: 1 / -1; }

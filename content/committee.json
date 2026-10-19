@@ -1,5 +1,5 @@
 {
-  "members": [
+  "executive": [
     {
       "role": "President",
       "name": "Omer Shahbaz",
@@ -14,6 +14,17 @@
     },
     {
       "role": "Treasurer"
+    }
+  ],
+  "general": [
+    {
+      "role": "Events Officer"
+    },
+    {
+      "role": "Marketing Officer"
+    },
+    {
+      "role": "Sponsorship Officer"
     }
   ]
 }

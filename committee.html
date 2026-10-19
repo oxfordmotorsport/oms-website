@@ -22,8 +22,10 @@
         <li><a href="index.html#about">About</a></li>
         <li><a href="events.html">Events</a></li>
         <li><a href="committee.html" class="active">Committee</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li data-nav="store" hidden><a href="store.html">Store</a></li>
         <li><a href="governance.html">Governance</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li><a href="join.html" class="nav-join">Join &mdash; &pound;<span data-site="price">5</span></a></li>
       </ul>
       <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
@@ -34,8 +36,10 @@
       <a href="index.html#about" onclick="closeMenu()">About</a>
       <a href="events.html" onclick="closeMenu()">Events</a>
       <a href="committee.html" onclick="closeMenu()">Committee</a>
+      <a href="sponsors.html" onclick="closeMenu()">Sponsors</a>
+      <a href="store.html" onclick="closeMenu()" data-nav="store" hidden>Store</a>
       <a href="governance.html" onclick="closeMenu()">Governance</a>
-      <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+      <a href="contact.html" onclick="closeMenu()">Contact</a>
       <a href="join.html" onclick="closeMenu()">Join &mdash; &pound;<span data-site="price">5</span></a>
     </div>
   </nav>
@@ -44,20 +48,29 @@
   <div class="page-hero">
     <p class="page-hero-eyebrow">Oxford Motorsport Society</p>
     <h1 class="page-hero-title">The Committee</h1>
-    <p class="page-hero-sub">
-      The Committee administers the Club and is elected annually at the Annual General Meeting in Hilary Term.
-    </p>
   </div>
 
-  <!-- COMMITTEE GRID -->
+  <!-- EXECUTIVE COMMITTEE -->
   <section>
     <div class="container">
-      <p class="section-eyebrow" data-site="academicYear">2026&ndash;27</p>
-      <h2 class="section-heading">Current Committee</h2>
+      <h2 class="section-heading">Executive Committee</h2>
       <div class="section-rule"></div>
+      <div class="committee-grid" id="executiveGrid"></div>
+    </div>
+  </section>
 
-      <div class="committee-grid" id="committeeGrid"></div>
+  <!-- GENERAL COMMITTEE -->
+  <section id="generalSection" style="background:var(--light)" hidden>
+    <div class="container">
+      <h2 class="section-heading">General Committee</h2>
+      <div class="section-rule"></div>
+      <div class="committee-grid" id="generalGrid"></div>
+    </div>
+  </section>
 
+  <section class="committee-contact">
+    <div class="container">
+      <p>To get in touch with the committee, email <a href="mailto:oxfordmotorsport@gmail.com">oxfordmotorsport@gmail.com</a>.</p>
     </div>
   </section>
 
@@ -73,8 +86,10 @@
             <li><a href="index.html#about">About</a></li>
             <li><a href="events.html">Events</a></li>
             <li><a href="committee.html">Committee</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+            <li data-nav="store" hidden><a href="store.html">Store</a></li>
             <li><a href="governance.html">Governance</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="join.html">Join &mdash; &pound;<span data-site="price">5</span></a></li>
             <li><a href="privacy.html">Privacy Notice</a></li>
           </ul>
@@ -82,7 +97,6 @@
       </div>
       <div class="footer-copy">
         <p>&copy; 2026 Oxford Motorsport Society</p>
-        <p>University of Oxford</p>
       </div>
     </div>
   </footer>

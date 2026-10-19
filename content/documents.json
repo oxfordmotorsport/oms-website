@@ -2,7 +2,7 @@
   "documents": [
     {
       "title": "Constitution & By-Laws",
-      "description": "The principal governing document of the Club, setting out objects, membership, the Committee structure, meetings, and dissolution.",
+      "description": "The principal governing document of the Club, setting out objects, membership, the Committee structure, meetings, and dissolution, together with the By-Laws establishing the Vice-President and General Officer roles.",
       "file": "/media/documents/OMS_Constitution_and_ByLaws_DRAFT.pdf"
     },
     {
@@ -12,12 +12,12 @@
     },
     {
       "title": "Complaints Procedure",
-      "description": "How the Club handles complaints about members or Committee decisions, including referral to the University Proctors.",
+      "description": "How the Club handles complaints about members or Committee decisions.",
       "file": "/media/documents/Oxford_Motorsport_Society_Complaints_Procedure.pdf"
     },
     {
       "title": "Safety Policy & Risk Assessment",
-      "description": "Risk assessment covering indoor events, socials, UK circuit trips, and overseas travel (e.g. Le Mans). Approved by the University Safety Officer.",
+      "description": "Risk assessment covering indoor events, socials, UK circuit trips, and overseas travel (e.g. Le Mans).",
       "file": "/media/documents/Oxford_Motorsport_Society_Risk_Assessment.pdf"
     }
   ]

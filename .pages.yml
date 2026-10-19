@@ -20,8 +20,8 @@ content:
     path: content/committee.json
     format: json
     fields:
-      - name: members
-        label: Committee members
+      - name: executive
+        label: Executive Committee
         description: Shown in this order on the Committee page. Drag to reorder.
         type: object
         list:
@@ -32,7 +32,20 @@ content:
           - { name: role, label: Role, type: string, required: true, description: "e.g. President" }
           - { name: name, label: Name, type: string, description: "Leave blank if the role is vacant" }
           - { name: college, label: College, type: string }
-          - { name: email, label: Email, type: string }
+          - { name: photo, label: Photo, type: image, description: "Square photos look best", options: { media: images } }
+          - { name: bio, label: Short bio, type: text, description: "One or two sentences (optional)" }
+      - name: general
+        label: General Committee
+        description: General Officers (e.g. Events, Marketing, Sponsorship). The section is hidden if this list is empty.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{role} — {name}"
+        fields:
+          - { name: role, label: Role, type: string, required: true, description: "e.g. Events Officer" }
+          - { name: name, label: Name, type: string, description: "Leave blank if the role is vacant" }
+          - { name: college, label: College, type: string }
           - { name: photo, label: Photo, type: image, description: "Square photos look best", options: { media: images } }
           - { name: bio, label: Short bio, type: text, description: "One or two sentences (optional)" }
 
@@ -53,7 +66,7 @@ content:
         fields:
           - { name: term, label: Term, type: string, required: true, description: "e.g. Michaelmas 2026" }
           - { name: startDate, label: Term start date, type: date, required: true, options: { format: yyyy-MM-dd } }
-          - { name: termCard, label: Term card image, type: image, description: "Optional — the same graphic you post on Instagram", options: { media: images } }
+          - { name: termCard, label: Term card image, type: image, description: "Portrait 4:5 image, e.g. 1080×1350 — the same graphic you post on Instagram", options: { media: images } }
           - name: events
             label: Events
             type: object
@@ -72,7 +85,7 @@ content:
                 options:
                   values: [Watch party, Speaker event, Social, Trip, Other]
               - { name: description, label: Description, type: text }
-              - { name: link, label: Sign-up / ticket link, type: string, description: "Optional — hidden once the event has passed" }
+              - { name: link, label: Sign-up / ticket link, type: string, description: "Optional (e.g. a Stripe payment link for tickets) — hidden once the event has passed" }
 
   - name: documents
     label: Governance documents
@@ -116,6 +129,8 @@ content:
     path: content/sponsors.json
     format: json
     fields:
+      - { name: pitch, label: Sponsorship pitch, type: text, description: "Shown on the Sponsors page. Leave a blank line between paragraphs." }
+      - { name: pack, label: Sponsorship pack (PDF), type: file, description: "Optional — adds a download link on the Sponsors page", options: { media: documents } }
       - name: sponsors
         label: Sponsors
         type: object
@@ -126,7 +141,40 @@ content:
         fields:
           - { name: name, label: Name, type: string, required: true }
           - { name: logo, label: Logo, type: image, description: "PNG or SVG, ideally on a transparent background", options: { media: images } }
+          - { name: description, label: Description, type: text, description: "Optional — one or two sentences shown on the Sponsors page" }
           - { name: url, label: Website, type: string }
+
+  - name: store
+    label: Store
+    type: file
+    path: content/store.json
+    format: json
+    fields:
+      - name: products
+        label: Products & tickets
+        description: Create a Stripe Payment Link for each item, then paste it here. The Store appears in the menu once at least one item isn't Hidden.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name} ({status})"
+        fields:
+          - { name: name, label: Name, type: string, required: true }
+          - name: category
+            label: Category
+            type: select
+            options:
+              values: [Tickets, Merch, Other]
+          - { name: image, label: Image, type: image, description: "Portrait 4:5 image looks best", options: { media: images } }
+          - { name: price, label: Price (£), type: number }
+          - { name: description, label: Description, type: text }
+          - { name: stripeLink, label: Stripe payment link, type: string }
+          - name: status
+            label: Status
+            type: select
+            description: "Hidden = not shown on the site (useful while setting up)"
+            options:
+              values: [On sale, Sold out, Hidden]
 
   - name: site
     label: Site settings
@@ -134,7 +182,6 @@ content:
     path: content/site.json
     format: json
     fields:
-      - { name: academicYear, label: Membership year, type: string, required: true, description: "Shown on the home and committee pages, e.g. 2026–27" }
       - { name: price, label: Membership price (£), type: number, required: true }
       - { name: stripeLink, label: Stripe payment link, type: string, description: "From Stripe → Payment Links. While blank, the Join page says online joining opens soon." }
       - { name: heroImage, label: Home page background photo, type: image, description: "Optional wide photo behind the title (it's darkened automatically)", options: { media: images } }

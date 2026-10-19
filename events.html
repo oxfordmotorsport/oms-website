@@ -22,8 +22,10 @@
         <li><a href="index.html#about">About</a></li>
         <li><a href="events.html" class="active">Events</a></li>
         <li><a href="committee.html">Committee</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li data-nav="store" hidden><a href="store.html">Store</a></li>
         <li><a href="governance.html">Governance</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li><a href="join.html" class="nav-join">Join &mdash; &pound;<span data-site="price">5</span></a></li>
       </ul>
       <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
@@ -34,8 +36,10 @@
       <a href="index.html#about" onclick="closeMenu()">About</a>
       <a href="events.html" onclick="closeMenu()">Events</a>
       <a href="committee.html" onclick="closeMenu()">Committee</a>
+      <a href="sponsors.html" onclick="closeMenu()">Sponsors</a>
+      <a href="store.html" onclick="closeMenu()" data-nav="store" hidden>Store</a>
       <a href="governance.html" onclick="closeMenu()">Governance</a>
-      <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+      <a href="contact.html" onclick="closeMenu()">Contact</a>
       <a href="join.html" onclick="closeMenu()">Join &mdash; &pound;<span data-site="price">5</span></a>
     </div>
   </nav>
@@ -44,9 +48,6 @@
   <div class="page-hero">
     <p class="page-hero-eyebrow">Oxford Motorsport Society</p>
     <h1 class="page-hero-title">Events &amp; Term Card</h1>
-    <p class="page-hero-sub">
-      Watch parties, speaker events, socials, and circuit trips throughout the Oxford academic year.
-    </p>
   </div>
 
   <!-- UPCOMING EVENTS -->
@@ -60,23 +61,16 @@
           <p>Term card coming soon. Follow us on <a href="https://www.instagram.com/oxmotorsport" target="_blank" rel="noopener" style="color:var(--navy)">Instagram</a> for updates.</p>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- PAST EVENTS -->
-  <section style="background:var(--light)">
+  <!-- PAST TERM CARDS (hidden until there is more than one term) -->
+  <section id="pastSection" style="background:var(--light)" hidden>
     <div class="container">
       <p class="section-eyebrow">Archive</p>
-      <h2 class="section-heading">Past Events</h2>
+      <h2 class="section-heading">Past Term Cards</h2>
       <div class="section-rule"></div>
-
-      <div id="pastTerms">
-        <div class="empty-state">
-          <p>Past term cards will appear here.</p>
-        </div>
-      </div>
-
+      <div class="term-archive" id="pastTerms"></div>
     </div>
   </section>
 
@@ -92,8 +86,10 @@
             <li><a href="index.html#about">About</a></li>
             <li><a href="events.html">Events</a></li>
             <li><a href="committee.html">Committee</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+            <li data-nav="store" hidden><a href="store.html">Store</a></li>
             <li><a href="governance.html">Governance</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="join.html">Join &mdash; &pound;<span data-site="price">5</span></a></li>
             <li><a href="privacy.html">Privacy Notice</a></li>
           </ul>
@@ -101,7 +97,6 @@
       </div>
       <div class="footer-copy">
         <p>&copy; 2026 Oxford Motorsport Society</p>
-        <p>University of Oxford</p>
       </div>
     </div>
   </footer>
